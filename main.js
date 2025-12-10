@@ -245,7 +245,9 @@ class Action {
             document.getElementById('next-btn').innerText = 'Finish'
         }
         if (question_number > 10) {
-            this.end_game()
+            setTimeout(() => {
+                this.end_game()
+            }, 500);
         }
         this.myeval.cont = false
     }
@@ -260,6 +262,9 @@ class Action {
         }
     }
     end_game = () => {
+        if (this.myeval.total_score < 0) {
+            this.myeval.total_score = 0
+        }
         document.getElementById('score').innerText = this.myeval.total_score
         document.getElementById('quiz-screen').classList.add('hide')
         document.getElementById('result-screen').classList.remove('hide')
