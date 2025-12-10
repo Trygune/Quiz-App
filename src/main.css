@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+    /* فونت زیبا برای فارسی */
+}
+
+body {
+    background: linear-gradient(to bottom right, #6d28d9, #4f46e5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* کانتینر اصلی سفید رنگ */
+.container {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* کلاس کمکی برای مخفی کردن صفحات */
+.hide {
+    display: none !important;
+}
+
+h1,
+h2 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* استایل دکمه‌های عمومی */
+.btn {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* دکمه شروع و تلاش دوباره */
+.primary-btn {
+    background-color: #4f46e5;
+    color: white;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+}
+
+.primary-btn:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+}
+
+/* استایل بخش کوییز */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* نوار پیشرفت */
+.progress-bar {
+    width: 100px;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4f46e5;
+    width: 0%;
+    /* این را با JS زیاد کن */
+    transition: width 0.3s ease;
+}
+
+/* گرید گزینه‌ها */
+.btn-grid {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* استایل دکمه‌های گزینه‌ها */
+.btn-grid .btn {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 2px solid transparent;
+    text-align: right;
+    font-weight: 500;
+}
+
+.btn-grid .btn:hover {
+    background-color: #e5e7eb;
+    border-color: #cbd5e1;
+}
+
+.btn.wrong {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+/* دکمه بعدی */
+.next-btn {
+    background-color: #1f2937;
+    color: white;
+    width: auto;
+    padding: 10px 30px;
+    margin-top: 10px;
+}
+
+/* دایره امتیاز در پایان */
+.score-circle {
+    width: 120px;
+    height: 120px;
+    background-color: #f3f4f6;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4f46e5;
+    border: 5px solid #4f46e5;
+}
+
+.total {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-right: 5px;
+}
+
+/* --- استایل لیست گزینه‌ها --- */
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* فاصله بین گزینه‌ها */
+    margin: 20px 0;
+}
+
+/* ظاهر دکمه‌های گزینه‌ها (شبیه اپلیکیشن) */
+.option-btn {
+    background-color: #fff;
+    color: #374151;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    /* گوشه‌های گرد */
+    padding: 15px 20px;
+    font-size: 1rem;
+    text-align: left;
+    /* متن فارسی راست‌چین */
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* سایه خیلی ملایم */
+    position: relative;
+    overflow: hidden;
+}
+
+/* افکت هاور (وقتی موس روی گزینه می‌رود) */
+.option-btn:hover {
+    border-color: #4f46e5;
+    background-color: #eef2ff;
+    transform: translateX(-5px);
+    /* حرکت جزئی به سمت چپ برای حس تعامل */
+}
+
+/* افکت کلیک */
+.option-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- استایل دکمه‌های درست و غلط (که با JS اضافه می‌شوند) --- */
+.option-btn.correct {
+    background-color: #d1fae5 !important;
+    border-color: #10b981 !important;
+    color: #065f46 !important;
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b !important;
+    opacity: 0.8;
+}
+.option-label.correct {
+    background-color: #d1fae5 !important;
+    border-color: #10b981 !important;
+    color: #065f46 !important;
+    font-weight: bold;
+}
+
+.option-label.wrong {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b !important;
+    opacity: 0.8;
+}
+
+/* --- استایل دکمه‌های ناوبری (قبلی و بعدی) --- */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    /* فاصله انداختن بین دو دکمه */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.nav-btn {
+    flex: 1;
+    /* هر دو دکمه اندازه برابر داشته باشند */
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* دکمه بعدی (استایل اصلی) */
+.nav-btn.next {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.nav-btn.next:hover {
+    background-color: #4338ca;
+}
+
+/* دکمه قبلی (استایل ثانویه - خاکستری) */
+.nav-btn.prev {
+    background-color: #e5e7eb;
+    color: #374151;
+    cursor: default;
+}
+
+.nav-btn.prev:hover {
+    background-color: #d1d5db;
+}
+
+/* کلاس غیرفعال کردن دکمه (مثلا وقتی در سوال اول هستیم دکمه قبلی کار نکند) */
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* مخفی کردن چک‌باکس پیش‌فرض زشت */
+.hidden-input {
+    display: none;
+}
+
+/* استایل لیبل (که حالا نقش دکمه را بازی می‌کند) */
+.option-label {
+    display: flex;
+    justify-content: space-between;
+    /* فاصله بین متن و مربع تیک */
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* متن گزینه */
+.option-text {
+    color: #374151;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* --- حالت هاور (موس روی گزینه) --- */
+.option-label:hover {
+    background-color: #f9fafb;
+    border-color: #a5b4fc;
+}
+
+/* --- حالت انتخاب شده (Checked) --- */
+/* وقتی اینپوت تیک خورد، لیبلِ بعد از آن تغییر کند */
+.hidden-input:checked+.option-label {
+    border-color: #4f46e5;
+    background-color: #eef2ff;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+/* استایل مربع/دایره چک‌باکس سفارشی */
+.custom-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #d1d5db;
+    border-radius: 6px; /* برای گرد شدن کامل (دایره) مقدار 50% بده */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+/* --- حالت انتخاب شده (Checked) --- */
+
+/* تغییر رنگ بوردر دایره وقتی انتخاب شد */
+.hidden-input:checked+.option-label .custom-checkbox {
+    border-color: #4f46e5;
+    background-color: #4f46e5;
+    /* داخلش سفید بماند */
+}
+
+/* ساختن نقطه وسط (Dot) */
+.hidden-input:checked+.option-label .custom-checkbox::after {
+    content: '✔';
+    /* محتوا خالی باشد، فقط شکل هندسی می‌خواهیم */
+    font-size: 14px;
+    color: white;
+    /* نقطه هم دایره باشد */
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* انیمیشن زیبا */
+}
+
+/* انیمیشن برای ظاهر شدن نقطه وسط */
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

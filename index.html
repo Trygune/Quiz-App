@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="src/main.css">
+    <title>Quiz App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="start-screen">
+            <h1>General Quiz</h1>
+            <p>10 amazing questions await you</p>
+            <button id="start-btn" class="btn primary-btn" onclick="app.start_game()">Start</button>
+        </div>
+
+        <div id="quiz-screen" class="hide">
+            <div class="quiz-header">
+                <span id="question-number">Question 1 of 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <h2 id="question-text">What is Your Question?</h2>
+
+            <div id="answer-buttons-radio" class="options-list hide">
+                <button id="number_1" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">First
+                    Option</button>
+                <button id="number_2" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">Second
+                    Option</button>
+                <button id="number_3" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">Third
+                    Option</button>
+                <button id="number_4" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">Fourth
+                    Option</button>
+            </div>
+            <div id="answer-buttons-checkbox" class="options-list hide">
+
+                <div>
+                    <input type="checkbox" id="opt-1" name="answer" alt="0" class="hidden-input"
+                        onclick="myquiz.track(event)">
+                    <label for="opt-1" class="option-label">
+                        <span class="option-text">First Option</span>
+                        <span class="custom-checkbox"></span> </label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="opt-2" name="answer" alt="1" class="hidden-input"
+                        onclick="myquiz.track(event)">
+                    <label for="opt-2" class="option-label">
+                        <span class="option-text">Second Option</span>
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="opt-3" name="answer" alt="2" class="hidden-input"
+                        onclick="myquiz.track(event)">
+                    <label for="opt-3" class="option-label">
+                        <span class="option-text">Third Option</span>
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="opt-4" name="answer" alt="3" class="hidden-input"
+                        onclick="myquiz.track(event)">
+                    <label for="opt-4" class="option-label">
+                        <span class="option-text">Fourth Option</span>
+                        <span class="custom-checkbox"></span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="controls hide">
+                <button id="next-btn" class="btn nav-btn next" onclick="app.go_next()">Next</button>
+            </div>
+        </div>
+
+        <div id="result-screen" class="hide">
+            <h2>Finished!</h2>
+            <p>Your Score:</p>
+            <div class="score-circle">
+                <span id="score">0</span>
+                <span class="total">/ 10</span>
+            </div>
+            <button id="restart-btn" class="btn primary-btn" onclick="app.reloader()">Try Again</button>
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
