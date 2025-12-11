@@ -9,85 +9,110 @@
     <title>Quiz App</title>
 </head>
 
-<body>
-    <div class="container">
+<body class="flex justify-center items-center p-5 min-h-screen font-mono bg-linear-to-br from-violet-600 to-indigo-600">
+    <div
+        class="bg-stone-50 w-full max-w-[500px] p-8 text-center overflow-hidden relative rounded-xl shadow-xl/20 shadow-stone-950">
         <div id="start-screen">
-            <h1>General Quiz</h1>
-            <p>10 amazing questions await you</p>
-            <button id="start-btn" class="btn primary-btn" onclick="app.start_game()">Start</button>
+            <h1 class="text-slate-800 mb-6 text-3xl font-bold">General Quiz</h1>
+            <p class="text-slate-500 mb-7 text-lg">10 amazing questions await you</p>
+            <button id="start-btn"
+                class="w-full mb-2 bg-indigo-600 text-stone-50 border-none rounded-lg py-3 text-lg cursor-pointer shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 transition-all duration-300 ease-initial hover:-translate-y-1"
+                onclick="app.start_game()">Start</button>
         </div>
 
-        <div id="quiz-screen" class="hide">
-            <div class="quiz-header">
+        <div id="quiz-screen" class="hidden">
+            <div class="flex justify-between items-center mb-5 text-slate-400 text-sm">
                 <span id="question-number">Question 1 of 10</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
+                <div class="w-28 h-2 bg-stone-200 rounded-full overflow-hidden">
+                    <div class="h-full bg-indigo-600 w-0 transition-[width] duration-300 ease-initial" id="progress-fill"></div>
                 </div>
             </div>
 
-            <h2 id="question-text">What is Your Question?</h2>
+            <h2 id="question-text" class="text-slate-800 mb-3 text-2xl font-bold">What is Your Question?</h2>
 
-            <div id="answer-buttons-radio" class="options-list hide">
-                <button id="number_1" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">First
+            <div id="answer-buttons-radio" class="flex flex-col gap-5 my-5 hidden">
+                <button id="number_1" type="button"
+                    class="optb hover:bg-stone-200 hover:border-indigo-600 shadow-sm cursor-pointer w-full mb-0.5 rounded-xl text-md overflow-hidden relative text-left py-4 px-5 bg-stone-50 text-slate-800 border-2 border-stone-200 border-solid transition-all duration-200 ease-initial active:scale-98 hover:-translate-x-3"
+                    onclick="myquiz.evalRadio(event)">First
                     Option</button>
-                <button id="number_2" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">Second
+                <button id="number_2" type="button"
+                    class="optb hover:bg-stone-200 hover:border-indigo-600 shadow-sm cursor-pointer w-full mb-0.5 rounded-xl text-md overflow-hidden relative text-left py-4 px-5 bg-stone-50 text-slate-800 border-2 border-stone-200 border-solid transition-all duration-200 ease-initial active:scale-98 hover:-translate-x-3"
+                    onclick="myquiz.evalRadio(event)">Second
                     Option</button>
-                <button id="number_3" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">Third
+                <button id="number_3" type="button"
+                    class="optb hover:bg-stone-200 hover:border-indigo-600 shadow-sm cursor-pointer w-full mb-0.5 rounded-xl text-md overflow-hidden relative text-left py-4 px-5 bg-stone-50 text-slate-800 border-2 border-stone-200 border-solid transition-all duration-200 ease-initial active:scale-98 hover:-translate-x-3"
+                    onclick="myquiz.evalRadio(event)">Third
                     Option</button>
-                <button id="number_4" type="button" class="btn option-btn" onclick="myquiz.evalRadio(event)">Fourth
+                <button id="number_4" type="button"
+                    class="optb hover:bg-stone-200 hover:border-indigo-600 shadow-sm cursor-pointer w-full mb-0.5 rounded-xl text-md overflow-hidden relative text-left py-4 px-5 bg-stone-50 text-slate-800 border-2 border-stone-200 border-solid transition-all duration-200 ease-initial active:scale-98 hover:-translate-x-3"
+                    onclick="myquiz.evalRadio(event)">Fourth
                     Option</button>
             </div>
-            <div id="answer-buttons-checkbox" class="options-list hide">
+            <div id="answer-buttons-checkbox" class="flex flex-col gap-5 my-5 hidden">
 
                 <div>
-                    <input type="checkbox" id="opt-1" name="answer" alt="0" class="hidden-input"
+                    <input type="checkbox" id="opt-1" name="answer" alt="0" class="hip peer hidden"
                         onclick="myquiz.track(event)">
-                    <label for="opt-1" class="option-label">
-                        <span class="option-text">First Option</span>
-                        <span class="custom-checkbox"></span> </label>
-                </div>
-
-                <div>
-                    <input type="checkbox" id="opt-2" name="answer" alt="1" class="hidden-input"
-                        onclick="myquiz.track(event)">
-                    <label for="opt-2" class="option-label">
-                        <span class="option-text">Second Option</span>
-                        <span class="custom-checkbox"></span>
+                    <label for="opt-1"
+                        class="lb peer-checked:bg-stone-100 peer-checked:border-indigo-600 hover:bg-stone-200 hover:border-indigo-600 cursor-pointer flex justify-between items-center bg-stone-50 border-2 shadow-sm border-solid border-stone-200 rounded-xl py-4 px-5 transition-all duration-200 ease-initial">
+                        <span class="text-slate-800 text-md">First Option</span>
+                        <span
+                            class="flex border-2 border-solid border-stone-200 w-6 h-6 rounded-lg justify-center items-center transition-all duration-200 goob text-stone-50 text-md"></span>
                     </label>
                 </div>
 
                 <div>
-                    <input type="checkbox" id="opt-3" name="answer" alt="2" class="hidden-input"
+                    <input type="checkbox" id="opt-2" name="answer" alt="1" class="hip peer hidden"
                         onclick="myquiz.track(event)">
-                    <label for="opt-3" class="option-label">
-                        <span class="option-text">Third Option</span>
-                        <span class="custom-checkbox"></span>
+                    <label for="opt-2"
+                        class="lb peer-checked:bg-stone-100 peer-checked:border-indigo-600 hover:bg-stone-200 hover:border-indigo-600 cursor-pointer flex justify-between items-center bg-stone-50 border-2 shadow-sm border-solid border-stone-200 rounded-xl py-4 px-5 transition-all duration-200 ease-initial">
+                        <span class="text-slate-800 text-md">Second Option</span>
+                        <span
+                            class="flex border-2 border-solid border-stone-200 w-6 h-6 rounded-lg justify-center items-center transition-all duration-200 goob text-stone-50 text-md"></span>
                     </label>
                 </div>
 
                 <div>
-                    <input type="checkbox" id="opt-4" name="answer" alt="3" class="hidden-input"
+                    <input type="checkbox" id="opt-3" name="answer" alt="2" class="hip peer hidden"
                         onclick="myquiz.track(event)">
-                    <label for="opt-4" class="option-label">
-                        <span class="option-text">Fourth Option</span>
-                        <span class="custom-checkbox"></span>
+                    <label for="opt-3"
+                        class="lb peer-checked:bg-stone-100 peer-checked:border-indigo-600 hover:bg-stone-200 hover:border-indigo-600 cursor-pointer flex justify-between items-center bg-stone-50 border-2 shadow-sm border-solid border-stone-200 rounded-xl py-4 px-5 transition-all duration-200 ease-initial">
+                        <span class="text-slate-800 text-md">Third Option</span>
+                        <span
+                            class="flex border-2 border-solid border-stone-200 w-6 h-6 rounded-lg justify-center items-center transition-all duration-200 goob text-stone-50 text-md"></span>
+                    </label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="opt-4" name="answer" alt="3" class="hip peer hidden"
+                        onclick="myquiz.track(event)">
+                    <label for="opt-4"
+                        class="lb peer-checked:bg-stone-100 peer-checked:border-indigo-600 hover:bg-stone-200 hover:border-indigo-600 cursor-pointer flex justify-between items-center bg-stone-50 border-2 shadow-sm border-solid border-stone-200 rounded-xl py-4 px-5 transition-all duration-200 ease-initial">
+                        <span class="text-slate-800 text-md">Fourth Option</span>
+                        <span
+                            class="flex border-2 border-solid border-stone-200 w-6 h-6 rounded-lg justify-center items-center transition-all duration-200 goob text-stone-50 text-md"></span>
                     </label>
                 </div>
 
             </div>
-            <div class="controls hide">
-                <button id="next-btn" class="btn nav-btn next" onclick="app.go_next()">Next</button>
+            <div class="crt flex justify-between gap-5 mt-5 hidden">
+                <button id="next-btn"
+                    class="cursor-pointer w-full mb-2 border-none rounded-lg py-3 text-lg font-bold flex-1 p-2 bg-indigo-600 hover:bg-indigo-700 text-stone-50 transition-all duration-300 ease-initial"
+                    onclick="app.go_next()">Next</button>
             </div>
         </div>
 
-        <div id="result-screen" class="hide">
-            <h2>Finished!</h2>
-            <p>Your Score:</p>
-            <div class="score-circle">
-                <span id="score">0</span>
-                <span class="total">/ 10</span>
+        <div id="result-screen" class="hidden">
+            <h2 class="text-slate-800 mb-3 text-2xl font-bold">Finished!</h2>
+            <p class="text-slate-400 mb-10 text-lg">Your Score:</p>
+            <div
+                class="flex justify-center items-center text-3xl font-bold bg-stone-50 text-indigo-600 border-5 border-solid border-indigo-600 size-[120px] rounded-full mx-auto mt-0 mb-5">
+                <span class="text-3xl" id="score">0</span>
+                <span class="text-xl text-slate-400 mr-2">/10</span>
             </div>
-            <button id="restart-btn" class="btn primary-btn" onclick="app.reloader()">Try Again</button>
+            <button id="restart-btn"
+                class="cursor-pointer w-full mb-2 border-none rounded-md py-3 text-lg font-bold bg-indigo-600 text-stone-50 shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 transition-all duration-300 ease-initial hover:-translate-y-1"
+                onclick="app.reloader()">Try Again</button>
         </div>
 
     </div>

@@ -149,10 +149,10 @@ class Quiz {
         this.pool.forEach(
             elm => {
                 if (this.question[question_number - 1].answers[0][this.opts[elm]]) {
-                    document.querySelectorAll('.option-label')[elm].classList.add('correct')
+                    document.querySelectorAll('.lb')[elm].classList.add('correct')
                     this.total_score += this.question[question_number - 1].score
                 } else {
-                    document.querySelectorAll('.option-label')[elm].classList.add('wrong')
+                    document.querySelectorAll('.lb')[elm].classList.add('wrong')
                     this.total_score -= this.question[question_number - 1].score
 
                 }
@@ -194,10 +194,10 @@ class Action {
         this.myeval = myeval
     }
     start_game = () => {
-        document.getElementById('start-screen').classList.add('hide')
-        document.getElementById('quiz-screen').classList.remove('hide')
+        document.getElementById('start-screen').classList.add('hidden')
+        document.getElementById('quiz-screen').classList.remove('hidden')
         this.load_question()
-        document.getElementsByClassName('controls')[0].classList.remove('hide')
+        document.getElementsByClassName('crt')[0].classList.remove('hidden')
     }
     load_question = () => {
         if (question_number < 11) {
@@ -215,15 +215,15 @@ class Action {
         this.myeval.opts.forEach((item, index) => {
             document.getElementById(`number_${index+1}`).value = ans[0][item]
         })
-        document.getElementById('answer-buttons-radio').classList.remove('hide')
-        document.getElementById('answer-buttons-checkbox').classList.add('hide')
+        document.getElementById('answer-buttons-radio').classList.remove('hidden')
+        document.getElementById('answer-buttons-checkbox').classList.add('hidden')
     }
     load_answers_check = (ans) => {
         this.myeval.opts.forEach((item, index) => {
             document.getElementById(`opt-${index+1}`).value = ans[0][item]
         })
-        document.getElementById('answer-buttons-radio').classList.add('hide')
-        document.getElementById('answer-buttons-checkbox').classList.remove('hide')
+        document.getElementById('answer-buttons-radio').classList.add('hidden')
+        document.getElementById('answer-buttons-checkbox').classList.remove('hidden')
     }
     go_next = () => {
         question_number++
@@ -235,7 +235,7 @@ class Action {
                 this.reset_ans()
                 this.load_question()
                 this.myeval.pool.clear()
-            }, 500);
+            }, 700);
         } else {
             this.reset_ans()
             this.load_question()
@@ -256,9 +256,9 @@ class Action {
             document.getElementById(`number_${o}`).classList.remove('correct')
             document.getElementById(`number_${o}`).classList.remove('wrong')
             document.getElementById(`number_${o}`).disabled = false
-            document.querySelectorAll('.option-label')[o - 1].classList.remove('correct')
-            document.querySelectorAll('.option-label')[o - 1].classList.remove('wrong')
-            document.querySelectorAll('.hidden-input')[o - 1].checked = false
+            document.querySelectorAll('.lb')[o - 1].classList.remove('correct')
+            document.querySelectorAll('.lb')[o - 1].classList.remove('wrong')
+            document.querySelectorAll('.hip')[o - 1].checked = false
         }
     }
     end_game = () => {
@@ -266,10 +266,10 @@ class Action {
             this.myeval.total_score = 0
         }
         document.getElementById('score').innerText = this.myeval.total_score
-        document.getElementById('quiz-screen').classList.add('hide')
-        document.getElementById('result-screen').classList.remove('hide')
-        document.getElementById('answer-buttons-radio').classList.add('hide')
-        document.getElementsByClassName('controls')[0].classList.add('hide')
+        document.getElementById('quiz-screen').classList.add('hidden')
+        document.getElementById('result-screen').classList.remove('hidden')
+        document.getElementById('answer-buttons-radio').classList.add('hidden')
+        document.getElementsByClassName('crt')[0].classList.add('hidden')
     }
     reloader = () => {
         location.reload()
